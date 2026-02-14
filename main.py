@@ -39,28 +39,3 @@ class GameObject:
 
     def collides_with(self, other):
         return self.__hitbox.overlaps(other.get_hitbox())
-
-
-
-rectangle = Rectangle(3, 4, 6, 5)
-rectangle_two = Rectangle(3, 6, 4, 9)
-spaceship = GameObject("spaceship", 1, 1, 3, 3)
-enemy = GameObject("enemy", 6, 5, 5, 6)
-
-print(f"DEBUG: Collides with? = {spaceship.collides_with(enemy)}")
-
-print(f"DEBUG: Spaceship hitbox = (x1 | {spaceship.get_hitbox().get_left_x()}), (y1 | {spaceship.get_hitbox().get_bottom_y()}), (x2 | {spaceship.get_hitbox().get_right_x()}), (y2 | {spaceship.get_hitbox().get_top_y()})")
-print(f"DEBUG: Enemy hitbox = (x1 | {enemy.get_hitbox().get_left_x()}), (y1 | {enemy.get_hitbox().get_bottom_y()}), (x2 | {enemy.get_hitbox().get_right_x()}), (y2 | {enemy.get_hitbox().get_top_y()})")
-
-
-
-
-
-# print(f"DEBUG: Get left x = {rectangle.get_left_x()}")
-# print(f"DEBUG: Get right x = {rectangle.get_right_x()}")
-# print(f"DEBUG: Get bottom y = {rectangle.get_bottom_y()}")
-# print(f"DEBUG: Get top y = {rectangle.get_top_y()}")
-# print(f"DEBUG: Get spaceship hitbox = {spaceship.get_hitbox().x1}")
-# print(f"DEBUG: Get spaceship hitbox = {spaceship.get_hitbox().y1}")
-# print(f"DEBUG: Get spaceship hitbox = {spaceship.get_hitbox().x2}")
-# print(f"DEBUG: Get spaceship hitbox = {spaceship.get_hitbox().y2}")
