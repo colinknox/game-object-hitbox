@@ -16,6 +16,12 @@ class Rectangle:
 
     def get_top_y(self):
         return max(self.y1, self.y2)
+    
+    def overlaps(self, other):
+        if self.get_left_x() <= other.get_right_x() and self.get_right_x() >= other.get_left_x() and self.get_bottom_y() <= other.get_top_y() and self.get_top_y() >= other.get_bottom_y():
+            return True
+        else:
+            return False 
 
 class GameObject:
     def __init__(self, name, center_x, center_y, width, height):
@@ -32,13 +38,19 @@ class GameObject:
         return self.__hitbox
 
     def collides_with(self, other):
-        pass
+        return self.__hitbox.overlaps(other.get_hitbox())
 
 
-rectangle = Rectangle(9, 3, 7, 4)
-spaceship = GameObject("spaceship", 3, 6, 2, 4)
 
+rectangle = Rectangle(3, 4, 6, 5)
+rectangle_two = Rectangle(3, 6, 4, 9)
+spaceship = GameObject("spaceship", 1, 1, 3, 3)
+enemy = GameObject("enemy", 6, 5, 5, 6)
 
+print(f"DEBUG: Collides with? = {spaceship.collides_with(enemy)}")
+
+print(f"DEBUG: Spaceship hitbox = (x1 | {spaceship.get_hitbox().get_left_x()}), (y1 | {spaceship.get_hitbox().get_bottom_y()}), (x2 | {spaceship.get_hitbox().get_right_x()}), (y2 | {spaceship.get_hitbox().get_top_y()})")
+print(f"DEBUG: Enemy hitbox = (x1 | {enemy.get_hitbox().get_left_x()}), (y1 | {enemy.get_hitbox().get_bottom_y()}), (x2 | {enemy.get_hitbox().get_right_x()}), (y2 | {enemy.get_hitbox().get_top_y()})")
 
 
 
